@@ -1,7 +1,8 @@
 from enum import Enum
+import random
 
 class Suit(Enum):
-    Clubs= 0
+    Clubs = 0
     Spades = 1
     Hearts = 2
     Diamonds = 3
@@ -41,19 +42,24 @@ class Card:
 
 class Deck:
     def __init__ (self):
-        self.deck = []
-
-    def add_card(self, suit: int, variant: int):
-        self.deck.append(Card(suit, variant))
+        self.deck = self.build_deck()
 
     def build_deck(self):
+        deck = []
         for suit in range(4):
             for variant in range(13):
-                self.add_card(suit, variant)
-    
+                deck.append(Card(suit, variant))
+        return deck
+
+    def random_card(self) -> Card:
+        card = random.choice(self.deck)
+        self.deck.remove(card)
+
+        return card
+
     def display_cards(self):
         for card in self.deck:
             print(card.card)
     
     def count_cards(self):
-        print(len(self.deck))
+        return len(self.deck)

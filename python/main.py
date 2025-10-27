@@ -1,10 +1,9 @@
 from card import Deck
+from deal import compare_score
 
 def main():
     deck = Deck()
-    deck.build_deck()
-    deck.display_cards()
-    deck.count_cards()
+    compare_score(deck)
 
 if __name__ == "__main__":
     main()
